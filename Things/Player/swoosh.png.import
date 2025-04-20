@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvhfyllbh8d6w"
-path="res://.godot/imported/flint.png-e508e6631d23be9e1ef3d739e569f363.ctex"
+uid="uid://uameaxdi41s2"
+path="res://.godot/imported/swoosh.png-65e7e8e1d53f7e1938a822d974308df9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/flint.png"
-dest_files=["res://.godot/imported/flint.png-e508e6631d23be9e1ef3d739e569f363.ctex"]
+source_file="res://things/player/swoosh.png"
+dest_files=["res://.godot/imported/swoosh.png-65e7e8e1d53f7e1938a822d974308df9.ctex"]
 
 [params]
 

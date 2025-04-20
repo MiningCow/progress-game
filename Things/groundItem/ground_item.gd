@@ -12,8 +12,8 @@ func _on_itemstack_changed():
 	if Engine.is_editor_hint(): update_configuration_warnings()
 	if item_stack and item_stack.item and item_stack.item.texture:
 		$Sprite.texture = item_stack.item.texture
-	
-	
+
+
 
 func _on_interacted(actor: Node):
 	var actor_inventory := get_node_inventory(actor)
@@ -34,4 +34,3 @@ func _get_configuration_warnings():
 	elif item_stack.item == null:
 		warnings.append("ItemStack is missing an Item!")
 	return warnings
-	

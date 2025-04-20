@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvhfyllbh8d6w"
-path="res://.godot/imported/flint.png-e508e6631d23be9e1ef3d739e569f363.ctex"
+uid="uid://drkpk5epojbxv"
+path="res://.godot/imported/Untitled.png-ae4644bf371566a95f10aed6fe9d6886.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/flint.png"
-dest_files=["res://.godot/imported/flint.png-e508e6631d23be9e1ef3d739e569f363.ctex"]
+source_file="res://things/tree/Untitled.png"
+dest_files=["res://.godot/imported/Untitled.png-ae4644bf371566a95f10aed6fe9d6886.ctex"]
 
 [params]
 

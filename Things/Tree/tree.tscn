@@ -1,18 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dca6gxbd4x8vj"]
+[gd_scene load_steps=13 format=3 uid="uid://dca6gxbd4x8vj"]
 
-[ext_resource type="Script" uid="uid://fa4p2wtp4mep" path="res://Things/Tree/tree.gd" id="1_oo61a"]
-[ext_resource type="Resource" uid="uid://ciijp75yl8bee" path="res://resources/items/Wood.tres" id="2_jp658"]
-[ext_resource type="Script" uid="uid://canu0fd2bm0a3" path="res://common/stat.gd" id="2_qgy5f"]
-[ext_resource type="Script" uid="uid://crc412l7pdm8t" path="res://resources/items/ItemStack.gd" id="3_q46hy"]
-[ext_resource type="PackedScene" uid="uid://so1goaoq2nmx" path="res://common/Hurtbox/Hurtbox.tscn" id="4_g6k3e"]
-[ext_resource type="Texture2D" uid="uid://ck6lpx2cjyx5b" path="res://Assets/tiles.png" id="4_jp658"]
+[ext_resource type="Script" uid="uid://fa4p2wtp4mep" path="res://things/tree/tree.gd" id="1_oo61a"]
+[ext_resource type="PackedScene" uid="uid://so1goaoq2nmx" path="res://things/common/Hurtbox/Hurtbox.tscn" id="4_g6k3e"]
+[ext_resource type="Texture2D" uid="uid://drkpk5epojbxv" path="res://things/tree/Untitled.png" id="4_kghrl"]
 [ext_resource type="Script" uid="uid://duvmkut2ytawn" path="res://resources/combat/defense.gd" id="5_66ngo"]
-
-[sub_resource type="Resource" id="Resource_010hh"]
-script = ExtResource("3_q46hy")
-item = ExtResource("2_jp658")
-quantity = 2
-metadata/_custom_type_script = "uid://crc412l7pdm8t"
+[ext_resource type="Script" uid="uid://hc8nddabqspm" path="res://things/common/health_stat.gd" id="5_kghrl"]
+[ext_resource type="Resource" uid="uid://ciijp75yl8bee" path="res://resources/items/Wood.tres" id="7_q1tnd"]
+[ext_resource type="Script" uid="uid://bcybnqrvvpkj" path="res://things/common/item_dropper_component.gd" id="8_q1tnd"]
+[ext_resource type="Script" uid="uid://crc412l7pdm8t" path="res://resources/items/itemStack.gd" id="8_r4rs7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgy5f"]
 radius = 5.0
@@ -23,26 +18,32 @@ flat_defense = 2.0
 metadata/_custom_type_script = "uid://duvmkut2ytawn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66ngo"]
-size = Vector2(12, 30)
+size = Vector2(8, 40)
+
+[sub_resource type="Resource" id="Resource_1rpnp"]
+script = ExtResource("8_r4rs7")
+item = ExtResource("7_q1tnd")
+quantity = 3
+metadata/_custom_type_script = "uid://crc412l7pdm8t"
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_oo61a")
-drops = SubResource("Resource_010hh")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-1, -12)
-texture = ExtResource("4_jp658")
-region_enabled = true
+position = Vector2(1, -26)
+texture = ExtResource("4_kghrl")
+offset = Vector2(0, 2)
 region_rect = Rect2(16, 16, 16, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_qgy5f")
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("2_qgy5f")
+script = ExtResource("5_kghrl")
 value = 5.0
 min = 0.0
 max = 20.0
@@ -53,7 +54,12 @@ health_stat = NodePath("../Health")
 defense = SubResource("Resource_flqaf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -11)
+position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_66ngo")
 
-[connection signal="stat_changed" from="Health" to="." method="_on_health_changed"]
+[node name="ItemDropperComponent" type="Node2D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("8_q1tnd")
+health = NodePath("../Health")
+item_stack = SubResource("Resource_1rpnp")
+
+[connection signal="died" from="Health" to="." method="_on_die"]

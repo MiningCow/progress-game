@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://d2q1fhyq0jqdh"]
 
-[ext_resource type="Script" uid="uid://6tni3fbxb2bd" path="res://Things/Player/player.gd" id="1_73etv"]
-[ext_resource type="Script" uid="uid://bbxxetlg08llx" path="res://common/Hurtbox/hurtbox.gd" id="3_2hm0b"]
+[ext_resource type="Script" uid="uid://6tni3fbxb2bd" path="res://things/player/player.gd" id="1_73etv"]
+[ext_resource type="Script" uid="uid://bbxxetlg08llx" path="res://things/common/Hurtbox/hurtbox.gd" id="3_2hm0b"]
 [ext_resource type="Script" uid="uid://bi2dfepcyi2qf" path="res://resources/combat/attack.gd" id="3_63lcq"]
-[ext_resource type="PackedScene" uid="uid://cq52vhrxfpwia" path="res://common/Interaction/InteractorComponent/interactor_component.tscn" id="3_hpgtu"]
-[ext_resource type="Script" uid="uid://canu0fd2bm0a3" path="res://common/stat.gd" id="3_ycsio"]
-[ext_resource type="Script" uid="uid://de1bs5dmbw7hi" path="res://common/inventory.gd" id="5_hpgtu"]
-[ext_resource type="Texture2D" uid="uid://b4qj65shmr7v5" path="res://Things/Player/player.png" id="6_63lcq"]
-[ext_resource type="PackedScene" uid="uid://yosvr0h3sw45" path="res://common/Hitbox/Hitbox.tscn" id="7_yhye4"]
+[ext_resource type="PackedScene" uid="uid://cq52vhrxfpwia" path="res://things/common/Interaction/InteractorComponent/interactor_component.tscn" id="3_hpgtu"]
+[ext_resource type="Script" uid="uid://canu0fd2bm0a3" path="res://things/common/stat.gd" id="3_ycsio"]
+[ext_resource type="Script" uid="uid://de1bs5dmbw7hi" path="res://things/common/inventory.gd" id="5_hpgtu"]
+[ext_resource type="Texture2D" uid="uid://b4qj65shmr7v5" path="res://things/player/player.png" id="6_63lcq"]
+[ext_resource type="PackedScene" uid="uid://yosvr0h3sw45" path="res://things/common/Hitbox/Hitbox.tscn" id="7_yhye4"]
 
 [sub_resource type="Resource" id="Resource_0jw6q"]
 script = ExtResource("3_63lcq")

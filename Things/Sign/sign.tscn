@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdovhywio1bh7"]
 
-[ext_resource type="Script" uid="uid://b4frjuf1up17" path="res://Things/Sign/sign.gd" id="1_50nrt"]
-[ext_resource type="PackedScene" uid="uid://df00j55aoiuv8" path="res://common/Interaction/InteractableComponent/interactable_component.tscn" id="1_rqvw5"]
+[ext_resource type="Script" uid="uid://b4frjuf1up17" path="res://things/sign/sign.gd" id="1_50nrt"]
+[ext_resource type="PackedScene" uid="uid://df00j55aoiuv8" path="res://things/common/Interaction/InteractableComponent/interactable_component.tscn" id="1_rqvw5"]
 [ext_resource type="Texture2D" uid="uid://u1rh54j8o2d0" path="res://icon.svg" id="2_50nrt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqvw5"]

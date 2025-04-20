@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqqhbhgksce7g"]
+[gd_scene load_steps=6 format=3 uid="uid://bqqhbhgksce7g"]
 
-[ext_resource type="Script" uid="uid://cwgp6yytu5gni" path="res://ground_item.gd" id="1_cnr5l"]
-[ext_resource type="PackedScene" uid="uid://df00j55aoiuv8" path="res://common/Interaction/InteractableComponent/interactable_component.tscn" id="2_cnr5l"]
-[ext_resource type="Texture2D" uid="uid://b4r618qhcadea" path="res://Assets/items/item.png" id="3_cnr5l"]
+[ext_resource type="Script" uid="uid://cwgp6yytu5gni" path="res://things/groundItem/ground_item.gd" id="1_cnr5l"]
+[ext_resource type="PackedScene" uid="uid://df00j55aoiuv8" path="res://things/common/Interaction/InteractableComponent/interactable_component.tscn" id="2_cnr5l"]
+[ext_resource type="Texture2D" uid="uid://b4r618qhcadea" path="res://assets/items/item.png" id="3_cnr5l"]
+[ext_resource type="Texture2D" uid="uid://def70eob8257l" path="res://things/groundItem/item_shadow.png" id="3_wkaxr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5x50s"]
 radius = 8.0
@@ -15,6 +16,9 @@ object = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
 shape = SubResource("CircleShape2D_5x50s")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("3_wkaxr")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_cnr5l")
