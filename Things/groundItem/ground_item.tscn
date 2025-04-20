@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqqhbhgksce7g"]
+
+[ext_resource type="Script" uid="uid://cwgp6yytu5gni" path="res://ground_item.gd" id="1_cnr5l"]
+[ext_resource type="PackedScene" uid="uid://df00j55aoiuv8" path="res://common/Interaction/InteractableComponent/interactable_component.tscn" id="2_cnr5l"]
+[ext_resource type="Texture2D" uid="uid://b4r618qhcadea" path="res://Assets/items/item.png" id="3_cnr5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5x50s"]
+radius = 8.0
+
+[node name="GroundItem" type="Node2D"]
+script = ExtResource("1_cnr5l")
+
+[node name="InteractableComponent" parent="." node_paths=PackedStringArray("object") instance=ExtResource("2_cnr5l")]
+object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+shape = SubResource("CircleShape2D_5x50s")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_cnr5l")
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interacted"]
