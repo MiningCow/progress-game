@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cmpgmpa8ujaep"]
+[gd_scene load_steps=16 format=4 uid="uid://cmpgmpa8ujaep"]
 
 [ext_resource type="Script" uid="uid://b5cjum2bxjie8" path="res://things/game/game.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://d05cggmcq6a5a" path="res://things/game/world.gd" id="2_feb5d"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://crc412l7pdm8t" path="res://resources/items/itemStack.gd" id="4_ryrav"]
 [ext_resource type="Resource" uid="uid://bq6tclcw7jjm2" path="res://resources/items/flint.tres" id="5_vef74"]
 [ext_resource type="PackedScene" uid="uid://dca6gxbd4x8vj" path="res://things/tree/tree.tscn" id="6_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://pdsg3vi4hlec" path="res://things/UI/inventory/inventory_display.tscn" id="9_mnftu"]
+[ext_resource type="PackedScene" uid="uid://c56e5v11yyxob" path="res://things/UI/inventory/inventory_item.tscn" id="10_4s8ir"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
 texture = ExtResource("3_vef74")
@@ -59,3 +61,9 @@ item_stack = SubResource("Resource_eow3j")
 
 [node name="Camera" type="Camera2D" parent="World/Player"]
 position = Vector2(-2, 0)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryDisplay" parent="UILayer" instance=ExtResource("9_mnftu")]
+visible = false
+inventory_item_scene = ExtResource("10_4s8ir")

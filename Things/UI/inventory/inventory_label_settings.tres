@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dxtliut0e773x"]
+
+[ext_resource type="FontFile" uid="uid://dcarogxs8ys63" path="res://assets/dogicapixel.otf" id="1_ds8lb"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_ds8lb")
+font_size = 8
+font_color = Color(0.631373, 0.631373, 0.631373, 1)
