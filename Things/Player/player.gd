@@ -4,20 +4,31 @@ class_name Player extends CharacterBody2D
 @onready var interactor = %InteractorComponent
 @onready var inventory = %Inventory
 var direction: Vector2
+var id: int
+
+func _enter_tree():
+	id = name.to_int()
+	set_multiplayer_authority(id)
 
 func _ready():
-	Globals.player = self
+	print("Player " + name + " _ready on " + str(multiplayer.get_unique_id()))
+	#$UsernameLabel.text = Lobby.players[id].name
+	if is_multiplayer_authority():
+		Globals.player = self
+		$CameraRemoteTransform2D.remote_path = Globals.camera.get_path()
 
 func _physics_process(delta):
-	velocity = player_input_velocity()
+	if is_multiplayer_authority(): velocity = player_input_velocity()
 
 	move_and_slide()
 
-func player_input_velocity():
+func player_input_velocity() -> Vector2:
 	direction = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	return direction*speed_stat.value
 
 func _input(event: InputEvent):
+	if not is_multiplayer_authority(): return
+
 	if event.is_action_pressed(&"interact"):
 		interactor.attempt_interaction(self)
 	if event.is_action_pressed(&"open_inventory"):

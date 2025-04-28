@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=9 format=3 uid="uid://dno3eamcentuu"]
 
-[ext_resource type="Texture2D" uid="uid://dh1dvycrbkx6c" path="res://things/UI/inventory/slot.png" id="1_nlqiq"]
-[ext_resource type="FontFile" uid="uid://dcarogxs8ys63" path="res://assets/dogicapixel.otf" id="2_mpav0"]
-[ext_resource type="StyleBox" uid="uid://hq1ie8q66bb" path="res://things/UI/style_box_normal.tres" id="2_womc8"]
+[ext_resource type="Texture2D" uid="uid://dh1dvycrbkx6c" path="res://Things/UI/inventory/slot.png" id="1_nlqiq"]
+[ext_resource type="FontFile" uid="uid://dcarogxs8ys63" path="res://Assets/dogicapixel.otf" id="2_mpav0"]
+[ext_resource type="StyleBox" uid="uid://hq1ie8q66bb" path="res://Things/UI/style_box_normal.tres" id="2_womc8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlqiq"]
 content_margin_left = 1.0
@@ -81,6 +81,7 @@ Button/styles/focus = SubResource("StyleBoxFlat_nlqiq")
 Button/styles/hover = SubResource("StyleBoxTexture_mpav0")
 Button/styles/normal = ExtResource("2_womc8")
 Button/styles/pressed = SubResource("StyleBoxTexture_nlqiq")
+Label/font_sizes/font_size = 8
 TextEdit/colors/font_color = Color(0.631373, 0.631373, 0.631373, 1)
 TextEdit/constants/line_spacing = 0
 TextEdit/font_sizes/font_size = 8

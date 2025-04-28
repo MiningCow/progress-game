@@ -1,17 +1,17 @@
 [gd_scene load_steps=18 format=4 uid="uid://cmpgmpa8ujaep"]
 
-[ext_resource type="Script" uid="uid://b5cjum2bxjie8" path="res://things/game/game.gd" id="1_e2o6t"]
-[ext_resource type="Script" uid="uid://d05cggmcq6a5a" path="res://things/game/world.gd" id="2_feb5d"]
-[ext_resource type="PackedScene" uid="uid://bqqhbhgksce7g" path="res://things/groundItem/ground_item.tscn" id="3_7jktm"]
-[ext_resource type="PackedScene" uid="uid://d2q1fhyq0jqdh" path="res://things/player/player.tscn" id="3_feb5d"]
-[ext_resource type="Texture2D" uid="uid://ck6lpx2cjyx5b" path="res://assets/tiles.png" id="3_vef74"]
-[ext_resource type="Script" uid="uid://crc412l7pdm8t" path="res://resources/items/itemStack.gd" id="4_ryrav"]
+[ext_resource type="Script" uid="uid://b5cjum2bxjie8" path="res://Things/game/game.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://d05cggmcq6a5a" path="res://Things/game/world.gd" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://bqqhbhgksce7g" path="res://Things/groundItem/ground_item.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://d2q1fhyq0jqdh" path="res://Things/Player/player.tscn" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://ck6lpx2cjyx5b" path="res://Assets/tiles.png" id="3_vef74"]
+[ext_resource type="Script" uid="uid://crc412l7pdm8t" path="res://resources/items/ItemStack.gd" id="4_ryrav"]
 [ext_resource type="Resource" uid="uid://bq6tclcw7jjm2" path="res://resources/items/flint.tres" id="5_vef74"]
-[ext_resource type="PackedScene" uid="uid://dca6gxbd4x8vj" path="res://things/tree/tree.tscn" id="6_j5wjh"]
-[ext_resource type="PackedScene" uid="uid://pdsg3vi4hlec" path="res://things/UI/inventory/inventory_display.tscn" id="9_mnftu"]
-[ext_resource type="PackedScene" uid="uid://c56e5v11yyxob" path="res://things/UI/inventory/inventory_item.tscn" id="10_4s8ir"]
-[ext_resource type="Texture2D" uid="uid://h0dku8tlh5xa" path="res://assets/ui/grass_background.png" id="11_f52dp"]
-[ext_resource type="Theme" uid="uid://dno3eamcentuu" path="res://things/UI/theme.tres" id="11_mxcr4"]
+[ext_resource type="PackedScene" uid="uid://dca6gxbd4x8vj" path="res://Things/Tree/tree.tscn" id="6_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://pdsg3vi4hlec" path="res://Things/UI/inventory/inventory_display.tscn" id="9_mnftu"]
+[ext_resource type="PackedScene" uid="uid://c56e5v11yyxob" path="res://Things/UI/inventory/inventory_item.tscn" id="10_4s8ir"]
+[ext_resource type="Texture2D" uid="uid://h0dku8tlh5xa" path="res://Assets/ui/grass_background.png" id="11_f52dp"]
+[ext_resource type="Theme" uid="uid://dno3eamcentuu" path="res://Things/UI/theme.tres" id="11_mxcr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
 texture = ExtResource("3_vef74")
@@ -35,6 +35,14 @@ metadata/_custom_type_script = "uid://crc412l7pdm8t"
 
 [node name="Game" type="Node"]
 script = ExtResource("1_e2o6t")
+player_scene = ExtResource("3_feb5d")
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://d2q1fhyq0jqdh")
+spawn_path = NodePath("../World")
+
+[node name="ItemSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../World/Items")
 
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -49,7 +57,6 @@ metadata/_edit_lock_ = true
 
 [node name="Entities" type="TileMapLayer" parent="World"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAQA=")
 tile_set = SubResource("TileSet_mnftu")
 
 [node name="Items" type="Node2D" parent="World"]
@@ -59,10 +66,7 @@ unique_name_in_owner = true
 position = Vector2(16, 32)
 item_stack = SubResource("Resource_eow3j")
 
-[node name="Player" parent="World" instance=ExtResource("3_feb5d")]
-
-[node name="Camera" type="Camera2D" parent="World/Player"]
-position = Vector2(-2, 0)
+[node name="Camera" type="Camera2D" parent="World"]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -99,12 +103,6 @@ offset_top = 8.0
 offset_right = 100.0
 offset_bottom = 48.0
 
-[node name="Host" type="Button" parent="UILayer/Menu/Background/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-text = "HOST
-"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="UILayer/Menu/Background/VBoxContainer"]
 layout_mode = 2
 
@@ -114,14 +112,35 @@ focus_mode = 0
 text = "JOIN
 "
 
-[node name="TextEdit" type="TextEdit" parent="UILayer/Menu/Background/VBoxContainer/HBoxContainer"]
+[node name="Address" type="TextEdit" parent="UILayer/Menu/Background/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 focus_mode = 1
-text = "Test"
+text = "localhost"
 scroll_past_end_of_file = true
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[connection signal="pressed" from="UILayer/Menu/Background/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/Menu/Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="Host" type="Button" parent="UILayer/Menu/Background/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+focus_mode = 0
+text = "HOST
+"
+
+[node name="Username" type="TextEdit" parent="UILayer/Menu/Background/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+focus_mode = 1
+text = "Username"
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
 [connection signal="pressed" from="UILayer/Menu/Background/VBoxContainer/HBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="UILayer/Menu/Background/VBoxContainer/HBoxContainer2/Host" to="." method="_on_host_pressed"]
+[connection signal="text_changed" from="UILayer/Menu/Background/VBoxContainer/HBoxContainer2/Username" to="." method="_on_username_text_changed"]

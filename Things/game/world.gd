@@ -4,6 +4,7 @@ var ground_item_scene: PackedScene = preload("res://Things/groundItem/ground_ite
 
 func _ready():
 	Globals.world = self
+	Globals.camera = $Camera
 
 func drop_item(item_stack: ItemStack, at: Vector2) -> GroundItem:
 	var ground_item := ground_item_scene.instantiate() as GroundItem
