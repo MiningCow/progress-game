@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cmpgmpa8ujaep"]
+[gd_scene load_steps=18 format=4 uid="uid://cmpgmpa8ujaep"]
 
 [ext_resource type="Script" uid="uid://b5cjum2bxjie8" path="res://things/game/game.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://d05cggmcq6a5a" path="res://things/game/world.gd" id="2_feb5d"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dca6gxbd4x8vj" path="res://things/tree/tree.tscn" id="6_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://pdsg3vi4hlec" path="res://things/UI/inventory/inventory_display.tscn" id="9_mnftu"]
 [ext_resource type="PackedScene" uid="uid://c56e5v11yyxob" path="res://things/UI/inventory/inventory_item.tscn" id="10_4s8ir"]
+[ext_resource type="Texture2D" uid="uid://h0dku8tlh5xa" path="res://assets/ui/grass_background.png" id="11_f52dp"]
+[ext_resource type="Theme" uid="uid://dno3eamcentuu" path="res://things/UI/theme.tres" id="11_mxcr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
 texture = ExtResource("3_vef74")
@@ -67,3 +69,59 @@ position = Vector2(-2, 0)
 [node name="InventoryDisplay" parent="UILayer" instance=ExtResource("9_mnftu")]
 visible = false
 inventory_item_scene = ExtResource("10_4s8ir")
+
+[node name="Menu" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_mxcr4")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="TextureRect" parent="UILayer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+texture = ExtResource("11_f52dp")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Menu/Background"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 48.0
+
+[node name="Host" type="Button" parent="UILayer/Menu/Background/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "HOST
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/Menu/Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="Join" type="Button" parent="UILayer/Menu/Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "JOIN
+"
+
+[node name="TextEdit" type="TextEdit" parent="UILayer/Menu/Background/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+focus_mode = 1
+text = "Test"
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[connection signal="pressed" from="UILayer/Menu/Background/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UILayer/Menu/Background/VBoxContainer/HBoxContainer/Join" to="." method="_on_join_pressed"]
