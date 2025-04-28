@@ -11,14 +11,18 @@ func _enter_tree():
 	set_multiplayer_authority(id)
 
 func _ready():
-	print("Player " + name + " _ready on " + str(multiplayer.get_unique_id()))
-	#$UsernameLabel.text = Lobby.players[id].name
+	Lobby.players[id] = self
 	if is_multiplayer_authority():
 		Globals.player = self
 		$CameraRemoteTransform2D.remote_path = Globals.camera.get_path()
 
+func load_player_info(info: Dictionary):
+	$UsernameLabel.text = info.name
+
 func _physics_process(delta):
-	if is_multiplayer_authority(): velocity = player_input_velocity()
+	if not is_multiplayer_authority(): return
+
+	velocity = player_input_velocity()
 
 	move_and_slide()
 

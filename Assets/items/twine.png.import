@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch0imnobv4fmv"
-path="res://.godot/imported/twine.png-87ed4ca283c8ee3316e2172b6fa0eebe.ctex"
+path="res://.godot/imported/twine.png-e3588dacb3092f8a920a26d9bea7da2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/twine.png"
-dest_files=["res://.godot/imported/twine.png-87ed4ca283c8ee3316e2172b6fa0eebe.ctex"]
+source_file="res://assets/items/twine.png"
+dest_files=["res://.godot/imported/twine.png-e3588dacb3092f8a920a26d9bea7da2c.ctex"]
 
 [params]
 

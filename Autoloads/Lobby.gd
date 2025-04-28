@@ -4,13 +4,14 @@ signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
-const PORT = 7000
-const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
-const MAX_CONNECTIONS = 20
+const PORT := 7000
+const DEFAULT_SERVER_IP := "127.0.0.1" # IPv4 localhost
+const MAX_CONNECTIONS := 20
 
-var players = {}
+var player_data := {}
+var players := {}
 
-var player_info = {"name": "Name"}
+var player_info := {"name": "Name"}
 
 func _ready():
 	multiplayer.peer_connected.connect(_on_player_connected)
@@ -33,7 +34,7 @@ func create_game():
 		return error
 	multiplayer.multiplayer_peer = peer
 
-	players[1] = player_info
+	player_data[1] = player_info
 	player_connected.emit(1, player_info)
 
 #idk what this is for...
@@ -46,12 +47,12 @@ func remove_multiplayer_peer():
 func _on_player_connected(id):
 	_register_player.rpc_id(id, player_info)
 
-# "call_remote"
+# Called on me by the sender with the sender's player info
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):
 	var new_player_id = multiplayer.get_remote_sender_id()
 	#print("on:" + str(multiplayer.get_unique_id()) + " ID:" + str(new_player_id) + " Payload: " + new_player_info.name)
-	players[new_player_id] = new_player_info
+	player_data[new_player_id] = new_player_info
 	player_connected.emit(new_player_id, new_player_info)
 
 func _on_player_disconnected(id):
@@ -62,7 +63,7 @@ func _on_player_disconnected(id):
 #this func adds the client's player info the the list because _register_player is a "call_remote"
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
-	players[peer_id] = player_info
+	player_data[peer_id] = player_info
 	player_connected.emit(peer_id, player_info)
 
 func _on_connected_fail():

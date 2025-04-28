@@ -2,6 +2,7 @@ class_name Game extends Node
 
 signal game_started
 const PORT := 6006
+@onready var world = $World
 @export var player_scene: PackedScene
 
 func _ready():
@@ -15,11 +16,12 @@ func _on_join_pressed():
 	Lobby.join_game(%Address.text)
 	start_game()
 
+#Called on my game by everyone else's game when we make a connection
 func _on_player_connected(peer_id, player_info):
-	if not is_multiplayer_authority(): return
 	var player: Player = player_scene.instantiate()
 	player.name = str(peer_id)
-	$World.add_child(player)
+	world.add_child(player)
+	player.load_player_info(player_info)
 
 func start_game():
 	game_started.emit()
