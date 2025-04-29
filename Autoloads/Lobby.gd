@@ -4,7 +4,7 @@ signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
-const PORT := 7000
+var DEFAULT_PORT := 7000
 const DEFAULT_SERVER_IP := "127.0.0.1" # IPv4 localhost
 const MAX_CONNECTIONS := 20
 
@@ -20,16 +20,17 @@ func _ready():
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
-func join_game(address = DEFAULT_SERVER_IP): #add arg player_info: PlayerInfo generated in the UI
+func join_game(server_address: String = DEFAULT_SERVER_IP, port: int = DEFAULT_PORT): #add arg player_info: PlayerInfo generated in the UI
+	var address = DEFAULT_SERVER_IP if server_address.is_empty() else DEFAULT_SERVER_IP
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, PORT)
+	var error = peer.create_client(address, port)
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer
 
-func create_game():
+func create_game(port: int = DEFAULT_PORT):
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(PORT, MAX_CONNECTIONS)
+	var error = peer.create_server(port, MAX_CONNECTIONS)
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer

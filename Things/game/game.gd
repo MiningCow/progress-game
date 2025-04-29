@@ -1,7 +1,6 @@
 class_name Game extends Node
 
 signal game_started
-const PORT := 6006
 @onready var world = $World
 @export var player_scene: PackedScene
 
@@ -9,11 +8,17 @@ func _ready():
 	Lobby.player_connected.connect(_on_player_connected)
 
 func _on_host_pressed():
-	Lobby.create_game()
+	if %Port.text.is_empty():
+		Lobby.create_game()
+	else:
+		Lobby.create_game(%Port.text)
 	start_game()
 
 func _on_join_pressed():
-	Lobby.join_game(%Address.text)
+	if %Port.text.is_empty():
+		Lobby.join_game()
+	else:
+		Lobby.join_game(%Address.text, %Port.text)
 	start_game()
 
 #Called on my game by everyone else's game when we make a connection

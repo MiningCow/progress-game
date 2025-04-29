@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://uameaxdi41s2"
-path="res://.godot/imported/swoosh.png-86348fe7937729b89101bf272c57eb35.ctex"
+path="res://.godot/imported/swoosh.png-65e7e8e1d53f7e1938a822d974308df9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Things/Player/swoosh.png"
-dest_files=["res://.godot/imported/swoosh.png-86348fe7937729b89101bf272c57eb35.ctex"]
+source_file="res://things/player/swoosh.png"
+dest_files=["res://.godot/imported/swoosh.png-65e7e8e1d53f7e1938a822d974308df9.ctex"]
 
 [params]
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://dca6gxbd4x8vj"]
 
-[ext_resource type="Script" uid="uid://fa4p2wtp4mep" path="res://Things/Tree/tree.gd" id="1_oo61a"]
-[ext_resource type="PackedScene" uid="uid://so1goaoq2nmx" path="res://Things/common/Hurtbox/Hurtbox.tscn" id="4_g6k3e"]
-[ext_resource type="Texture2D" uid="uid://drkpk5epojbxv" path="res://Things/Tree/Untitled.png" id="4_kghrl"]
+[ext_resource type="Script" uid="uid://fa4p2wtp4mep" path="res://things/tree/tree.gd" id="1_oo61a"]
+[ext_resource type="PackedScene" uid="uid://so1goaoq2nmx" path="res://things/common/Hurtbox/Hurtbox.tscn" id="4_g6k3e"]
+[ext_resource type="Texture2D" uid="uid://drkpk5epojbxv" path="res://things/tree/Untitled.png" id="4_kghrl"]
 [ext_resource type="Script" uid="uid://duvmkut2ytawn" path="res://resources/combat/defense.gd" id="5_66ngo"]
-[ext_resource type="Script" uid="uid://hc8nddabqspm" path="res://Things/common/health_stat.gd" id="5_kghrl"]
+[ext_resource type="Script" uid="uid://hc8nddabqspm" path="res://things/common/health_stat.gd" id="5_kghrl"]
 [ext_resource type="Resource" uid="uid://ciijp75yl8bee" path="res://resources/items/Wood.tres" id="7_q1tnd"]
-[ext_resource type="Script" uid="uid://bcybnqrvvpkj" path="res://Things/common/item_dropper_component.gd" id="8_q1tnd"]
-[ext_resource type="Script" uid="uid://crc412l7pdm8t" path="res://resources/items/ItemStack.gd" id="8_r4rs7"]
+[ext_resource type="Script" uid="uid://bcybnqrvvpkj" path="res://things/common/item_dropper_component.gd" id="8_q1tnd"]
+[ext_resource type="Script" uid="uid://crc412l7pdm8t" path="res://resources/items/itemStack.gd" id="8_r4rs7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgy5f"]
 radius = 5.0
