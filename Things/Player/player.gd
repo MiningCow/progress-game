@@ -1,8 +1,8 @@
 class_name Player extends CharacterBody2D
 
-@onready var speed_stat = %Speed
-@onready var interactor = %InteractorComponent
-@onready var inventory = %Inventory
+@onready var speed_stat: Stat = %Speed
+@onready var interactor: Interactor = %InteractorComponent
+@onready var inventory: Inventory = %Inventory
 var direction: Vector2
 var id: int
 
@@ -32,8 +32,7 @@ func player_input_velocity() -> Vector2:
 
 func _input(event: InputEvent):
 	if not is_multiplayer_authority(): return
-
 	if event.is_action_pressed(&"interact"):
-		interactor.attempt_interaction(self)
+		interactor.attempt_interaction()
 	if event.is_action_pressed(&"open_inventory"):
 		Globals.playerInventoryDisplay.toggle(inventory)

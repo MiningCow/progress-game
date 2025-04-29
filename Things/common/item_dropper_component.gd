@@ -11,10 +11,10 @@ func _ready():
 	if Engine.is_editor_hint(): return
 	assert(health)
 	if not item_stack: return
-	health.died.connect(
-		func(): Globals.world.drop_item(item_stack, global_position)
-	)
+	health.died.connect(_on_death)
 
+func _on_death():
+	Globals.world.drop_item(item_stack, global_position)
 
 func _get_configuration_warnings():
 	if health == null: return ["Missing health stat!"]

@@ -1,12 +1,17 @@
-extends Area2D
+class_name Interactor extends Area2D
 
-#@export var interactor: Node
+@export var actor: Player
 
-func attempt_interaction(actor: Node) -> Node:
+func _enter_tree():
+	set_multiplayer_authority(actor.get_multiplayer_authority())
+
+func attempt_interaction():
+	if not is_multiplayer_authority(): return
+
 	var available_interactions = get_overlapping_areas()
 	if available_interactions.is_empty(): return null
 	var closest_interactable := find_closest_node(available_interactions) as Interactable
-	return closest_interactable.interact(actor)
+	closest_interactable.interact.rpc(actor.get_path())
 
 func find_closest_node(nodes: Array) -> Node2D:
 	return nodes.reduce(func(min_dist_node, node: Node2D):
