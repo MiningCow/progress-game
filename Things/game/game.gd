@@ -11,14 +11,14 @@ func _on_host_pressed():
 	if %Port.text.is_empty():
 		Lobby.create_game()
 	else:
-		Lobby.create_game(%Port.text)
+		Lobby.create_game(%Port.text.to_int())
 	start_game()
 
 func _on_join_pressed():
 	if %Port.text.is_empty():
 		Lobby.join_game()
 	else:
-		Lobby.join_game(%Address.text, %Port.text)
+		Lobby.join_game(%Address.text, %Port.text.to_int())
 	start_game()
 
 #Called on my game by everyone else's game when we make a connection
